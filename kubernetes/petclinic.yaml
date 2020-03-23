@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: petclinic
-  replicas: 1 
+  replicas: 3 
   template: 
     metadata:
       labels:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: petclinic
-        image: ibuchh/petclinic-spinnaker-jenkins
+        image: rdarst/petclinic-spinnaker-jenkins
         ports:
         - containerPort: 8080
         imagePullPolicy: Always
