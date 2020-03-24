@@ -2,15 +2,17 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: petclinic
+  labels:
+    applicationName: petclinic
 spec:
   selector:
     matchLabels:
-      app: petclinic
+      applicationName: petclinic
   replicas: 3 
   template: 
     metadata:
       labels:
-        app: petclinic
+        applicationName: petclinic
     spec:
       containers:
       - name: petclinic
