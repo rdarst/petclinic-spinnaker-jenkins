@@ -3,6 +3,10 @@ pipeline {
        triggers {
         pollSCM "* * * * *"
        }
+    environment {
+       SHIFTLEFT_ID = credentials('ShiftLeft ID')
+       SHIFTLEFT_SECRET = credentials('ShiftLeft Secret')
+    }
     stages {
         stage('Build Application') { 
             steps {
