@@ -4,8 +4,8 @@ pipeline {
         pollSCM "* * * * *"
        }
     environment {
-       SHIFTLEFT_ID = credentials('ShiftLeft ID')
-       SHIFTLEFT_SECRET = credentials('ShiftLeft Secret')
+       SHIFTLEFT_ID = credentials('ShiftLeftID')
+       SHIFTLEFT_SECRET = credentials('ShiftLeftSecret')
     }
     stages {
         stage('Build Application') { 
