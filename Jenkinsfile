@@ -36,15 +36,6 @@ pipeline {
                 }
             }
         }
-        stage('Scan with ShiftLeft') {
-            when {
-                branch 'master'
-            }
-            steps {
-                echo '=== Scanning Docker Image with ShiftLeft ==='
-                sh("shiftleft image-scan -s ./")
-            }
-        }
         stage('Push Docker Image') {
             when {
                 branch 'master'
@@ -59,6 +50,17 @@ pipeline {
                         app.push("latest")
                     }
                 }
+            }
+        }
+        stage('Scan with ShiftLeft') {
+            when {
+                branch 'master'
+            }
+            steps {
+                echo '=== Scanning Docker Image with ShiftLeft ==='
+                sh("docker save -o scan.tar rdarst/petclinic-spinnaker-jenkins:latest")
+                sh("shiftleft image-scan -i scan.tar")
+                sh("rm scan.tar")
             }
         }
         stage('Remove local images') {
