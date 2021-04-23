@@ -36,6 +36,15 @@ pipeline {
                 }
             }
         }
+        stage('Scan with ShiftLeft') {
+            when {
+                branch 'master'
+            }
+            steps {
+                echo '=== Scanning Docker Image with ShiftLeft ==='
+                sh("shiftleft image-scan -s ./")
+            }
+        }
         stage('Push Docker Image') {
             when {
                 branch 'master'
