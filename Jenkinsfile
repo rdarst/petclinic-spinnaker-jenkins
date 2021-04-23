@@ -58,9 +58,11 @@ pipeline {
             }
             steps {
                 echo '=== Scanning Docker Image with ShiftLeft ==='
+                /*
                 sh("docker save -o scan.tar rdarst/petclinic-spinnaker-jenkins:latest")
                 sh("shiftleft image-scan -i scan.tar")
                 sh("rm scan.tar")
+                */
             }
         }
         stage('Remove local images') {
